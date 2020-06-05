@@ -13,6 +13,10 @@
 		D5BF6752248A32540046DFF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5BF6751248A32540046DFF6 /* Assets.xcassets */; };
 		D5BF6755248A32540046DFF6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5BF6754248A32540046DFF6 /* Preview Assets.xcassets */; };
 		D5BF6758248A32540046DFF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5BF6756248A32540046DFF6 /* LaunchScreen.storyboard */; };
+		D5BF6762248A3C0C0046DFF6 /* TitledContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF6761248A3C0C0046DFF6 /* TitledContainer.swift */; };
+		D5BF6766248A3DAF0046DFF6 /* Decimal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF6765248A3DAF0046DFF6 /* Decimal+Extensions.swift */; };
+		D5BF6768248A577E0046DFF6 /* SteppableInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF6767248A577E0046DFF6 /* SteppableInput.swift */; };
+		D5BF676A248A5AE20046DFF6 /* FormattingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF6769248A5AE20046DFF6 /* FormattingTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		D5BF6754248A32540046DFF6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D5BF6757248A32540046DFF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D5BF6759248A32540046DFF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5BF6761248A3C0C0046DFF6 /* TitledContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledContainer.swift; sourceTree = "<group>"; };
+		D5BF6765248A3DAF0046DFF6 /* Decimal+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Extensions.swift"; sourceTree = "<group>"; };
+		D5BF6767248A577E0046DFF6 /* SteppableInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteppableInput.swift; sourceTree = "<group>"; };
+		D5BF6769248A5AE20046DFF6 /* FormattingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattingTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +64,10 @@
 		D5BF674A248A32530046DFF6 /* SneZhanna */ = {
 			isa = PBXGroup;
 			children = (
+				D5BF6764248A3DA40046DFF6 /* Utils */,
+				D5BF6763248A3D9E0046DFF6 /* VIews */,
 				D5BF674B248A32530046DFF6 /* AppDelegate.swift */,
 				D5BF674D248A32530046DFF6 /* SceneDelegate.swift */,
-				D5BF674F248A32530046DFF6 /* ContentView.swift */,
 				D5BF6751248A32540046DFF6 /* Assets.xcassets */,
 				D5BF6756248A32540046DFF6 /* LaunchScreen.storyboard */,
 				D5BF6759248A32540046DFF6 /* Info.plist */,
@@ -73,6 +82,25 @@
 				D5BF6754248A32540046DFF6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D5BF6763248A3D9E0046DFF6 /* VIews */ = {
+			isa = PBXGroup;
+			children = (
+				D5BF6761248A3C0C0046DFF6 /* TitledContainer.swift */,
+				D5BF674F248A32530046DFF6 /* ContentView.swift */,
+				D5BF6767248A577E0046DFF6 /* SteppableInput.swift */,
+				D5BF6769248A5AE20046DFF6 /* FormattingTextField.swift */,
+			);
+			path = VIews;
+			sourceTree = "<group>";
+		};
+		D5BF6764248A3DA40046DFF6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D5BF6765248A3DAF0046DFF6 /* Decimal+Extensions.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,9 +174,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5BF6762248A3C0C0046DFF6 /* TitledContainer.swift in Sources */,
+				D5BF676A248A5AE20046DFF6 /* FormattingTextField.swift in Sources */,
 				D5BF674C248A32530046DFF6 /* AppDelegate.swift in Sources */,
+				D5BF6766248A3DAF0046DFF6 /* Decimal+Extensions.swift in Sources */,
 				D5BF674E248A32530046DFF6 /* SceneDelegate.swift in Sources */,
 				D5BF6750248A32530046DFF6 /* ContentView.swift in Sources */,
+				D5BF6768248A577E0046DFF6 /* SteppableInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
