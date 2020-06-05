@@ -11,8 +11,8 @@ import SwiftUI
 struct ContentView: View {
     
     @State var bill: Decimal = 100
-    @State var tipPercent: Int = 15
-    @State var numberOfPeople: Int = 2
+    @State var tipPercent: Int = 10
+    @State var numberOfPeople: Int = 1
     
     private let priceFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -83,6 +83,7 @@ struct ContentView: View {
                 .navigationBarTitle("Be a Gentleman with SneZhanna", displayMode: .inline)
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     // MARK: - private functions
