@@ -73,7 +73,7 @@ extension FormattingTextField {
                                        range: range,
                                        replacingString: string)
             textField.applyReplacing(info)
-            let isTryToDeleteFirstSymbol = originalText == info.text && string.isEmpty
+            let isTryToDeleteFirstSymbol = originalText == info.text && string.isEmpty && range.location == 0
             if isTryToDeleteFirstSymbol {
                 textField.selectAll(nil)
             }

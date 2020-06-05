@@ -16,8 +16,9 @@ struct ContentView: View {
     
     private let priceFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencySymbol = ""
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 2
         return formatter
     }()
     
@@ -34,15 +35,20 @@ struct ContentView: View {
     }()
     
     var body: some View {
+        let feedbackGenerator = UISelectionFeedbackGenerator()
         let billBinding = Binding<String>(get: { return self.priceFormatter.string(from: self.bill.numberValue) ?? "" },
                                    set: { self.setBill($0) })
+        let tipBinding = Binding<String>(get: { return self.tipFormatter.string(from: NSNumber(value: self.tipPercent)) ?? "" },
+                                         set: {
+                                            self.tipPercent = self.tipFormatter.number(from: $0)?.intValue ?? 0
+        })
+        let numberOfPeopleBinding = Binding<String>(get: { return "\(self.numberOfPeople)" },
+                                                    set: {
+                                                        self.numberOfPeople = Int($0) ?? 0
+        })
         
         let tip = priceFormatter.string(from: (self.bill / 100 * Decimal(tipPercent) / Decimal(numberOfPeople)).numberValue) ?? ""
         let total = priceFormatter.string(from: (self.bill / 100 * (100 + Decimal(tipPercent)) / Decimal(numberOfPeople)).numberValue) ?? ""
-        let tipBinding = Binding<String>(get: { return self.tipFormatter.string(from: NSNumber(value: self.tipPercent)) ?? "" },
-                                         set: { self.tipPercent = self.tipFormatter.number(from: $0)?.intValue ?? 0 })
-        let numberOfPeopleBinding = Binding<String>(get: { return "\(self.numberOfPeople)" },
-                                                    set: { self.numberOfPeople = Int($0) ?? 0 })
         
         let padding: CGFloat = 20
         
@@ -54,25 +60,25 @@ struct ContentView: View {
                     TitledContainer(title: "Bill") {
                         FormattingTextField(text: billBinding,
                                             formatter: self.priceFormatter,
-                                            validator: self.validator(minLimit: 0, maxLimit: nil),
+                                            validator: self.validator(minLimit: 0, maxLimit: 999_999_999.99),
                                             isFirstResponder: true)
                             .frame(height: 30)
                     }
                     TitledContainer(title: "Tip %") {
-                        Stepper(value: self.$tipPercent, in: 0...1000) {
+                        Stepper(value: self.$tipPercent, in: 0...999_999, onEditingChanged: { _ in feedbackGenerator.selectionChanged() }) {
                             FormattingTextField(text: tipBinding,
                                                 formatter: self.tipFormatter,
-                                                validator: self.validator(minLimit: 0, maxLimit: 1000),
+                                                validator: self.validator(minLimit: 0, maxLimit: 999_999),
                                                 keyboardType: .numberPad,
                                                 isFirstResponder: false)
                                 .frame(height: 30)
                         }
                     }
                     TitledContainer(title: "Number of people") {
-                        Stepper(value: self.$numberOfPeople, in: 1...1000) {
+                        Stepper(value: self.$numberOfPeople, in: 1...999_999, onEditingChanged: { _ in feedbackGenerator.selectionChanged() }) {
                             FormattingTextField(text: numberOfPeopleBinding,
                                                 formatter: self.numberOfPeopleFormatter,
-                                                validator: self.validator(minLimit: 1, maxLimit: 1000),
+                                                validator: self.validator(minLimit: 1, maxLimit: 999_999),
                                                 keyboardType: .numberPad,
                                                 isFirstResponder: false)
                                 .frame(height: 30)
@@ -88,12 +94,12 @@ struct ContentView: View {
     
     // MARK: - private functions
     
-    private func validator(minLimit: Int, maxLimit: Int?) -> (NSNumber) -> NSNumber {
+    private func validator(minLimit: Double, maxLimit: Double?) -> (NSNumber) -> NSNumber {
         return { value in
-            if value.intValue < minLimit {
+            if value.doubleValue < minLimit {
                 return NSNumber(value: minLimit)
             }
-            if let max = maxLimit, value.intValue > max {
+            if let max = maxLimit, value.doubleValue > max {
                 return NSNumber(value: max)
             }
             
@@ -102,20 +108,18 @@ struct ContentView: View {
     }
     
     private func setBill(_ string: String) {
-        var allowedSymbols = CharacterSet.decimalDigits
-        allowedSymbols.insert(charactersIn: priceFormatter.decimalSeparator)
-        let clearedString: String = string.filter { character -> Bool in
-            character.unicodeScalars.contains(where: allowedSymbols.contains)
-        }
-        .trimmingCharacters(in: CharacterSet(charactersIn: priceFormatter.decimalSeparator))
-        let doubleValue = Double(clearedString) ?? 0
-        bill = Decimal(doubleValue)
+        bill = priceFormatter.number(from: string)?.decimalValue ?? 0
     }
     
     private func titledText(title: String, text: String) -> some View {
         VStack(spacing: 4) {
             Text(title).font(.title)
-            Text(text).font(.largeTitle).fontWeight(.bold)
+            Text(text)
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
+                .frame(height: 40)
         }
     }
     
