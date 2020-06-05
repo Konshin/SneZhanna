@@ -15,7 +15,6 @@
 		D5BF6758248A32540046DFF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5BF6756248A32540046DFF6 /* LaunchScreen.storyboard */; };
 		D5BF6762248A3C0C0046DFF6 /* TitledContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF6761248A3C0C0046DFF6 /* TitledContainer.swift */; };
 		D5BF6766248A3DAF0046DFF6 /* Decimal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF6765248A3DAF0046DFF6 /* Decimal+Extensions.swift */; };
-		D5BF6768248A577E0046DFF6 /* SteppableInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF6767248A577E0046DFF6 /* SteppableInput.swift */; };
 		D5BF676A248A5AE20046DFF6 /* FormattingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF6769248A5AE20046DFF6 /* FormattingTextField.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +29,6 @@
 		D5BF6759248A32540046DFF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5BF6761248A3C0C0046DFF6 /* TitledContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledContainer.swift; sourceTree = "<group>"; };
 		D5BF6765248A3DAF0046DFF6 /* Decimal+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Extensions.swift"; sourceTree = "<group>"; };
-		D5BF6767248A577E0046DFF6 /* SteppableInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteppableInput.swift; sourceTree = "<group>"; };
 		D5BF6769248A5AE20046DFF6 /* FormattingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattingTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,7 +87,6 @@
 			children = (
 				D5BF6761248A3C0C0046DFF6 /* TitledContainer.swift */,
 				D5BF674F248A32530046DFF6 /* ContentView.swift */,
-				D5BF6767248A577E0046DFF6 /* SteppableInput.swift */,
 				D5BF6769248A5AE20046DFF6 /* FormattingTextField.swift */,
 			);
 			path = VIews;
@@ -180,7 +177,6 @@
 				D5BF6766248A3DAF0046DFF6 /* Decimal+Extensions.swift in Sources */,
 				D5BF674E248A32530046DFF6 /* SceneDelegate.swift in Sources */,
 				D5BF6750248A32530046DFF6 /* ContentView.swift in Sources */,
-				D5BF6768248A577E0046DFF6 /* SteppableInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
